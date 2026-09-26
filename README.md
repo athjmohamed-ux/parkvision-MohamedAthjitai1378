@@ -28,3 +28,23 @@ ParkVision analyzes parking lot camera images to detect which spaces are occupie
 - **Labels:** 2 classes — space-empty, space-occupied (bounding boxes)
 - **Vehicle type:** No custom collection needed — reused COCO classes (car, bus, truck) from a pretrained model
 - **License:** CC BY 4.0
+
+## Milestone Plan (16-week term)
+
+| Phase | Goal | Status |
+|---|---|---|
+| Blueprint (Week 10) | Plan approved, occupancy model tested | ✅ Done — YOLOv8n fine-tuned on PKLot, mAP50 = 0.990 on test set |
+| First Working Demo (Week 11) | Pretrained model runs end to end on sample images | ✅ Done — occupancy detection + vehicle-type attempt tested |
+| Make It Yours (Weeks 12–13) | Add application logic (counting, reporting, occupancy map) | Planned |
+| Improve and Measure (Week 14) | Test on more images, refine vehicle-type approach or scope it out | Planned |
+| Package and Present (Week 15) | Demo video, final README, final slides | Planned |
+
+## Risks and Plan B
+
+1. **Risk:** General-purpose vehicle detectors (COCO-pretrained) are unreliable on small crops like individual parking spaces — only ~14% of occupied-space crops produced a valid vehicle-type detection in testing, even after upscaling.
+   **Plan B:** Present occupancy detection (already at 99% mAP50) as the core, guaranteed deliverable. Present vehicle-type detection as an exploratory/bonus feature, and consider fine-tuning a small classifier specifically on vehicle-type crops if time allows.
+
+2. **Risk:** The occupancy model may not generalize as well to a parking lot outside PKLot's 3 source lots (different camera angle, lighting, or layout).
+   **Plan B:** Scope the final demo to PKLot-style camera views (or a similar top-down angle), and clearly state this limitation rather than claiming universal generalization.
+
+**Compute:** Google Colab (free tier, T4 GPU) — sufficient for all training and inference done so far, estimated cost: $0.
