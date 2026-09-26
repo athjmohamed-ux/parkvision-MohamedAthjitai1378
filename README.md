@@ -20,3 +20,11 @@ ParkVision analyzes parking lot camera images to detect which spaces are occupie
 - **Model 2 — Vehicle type:** YOLOv8n, pretrained on COCO (80 classes, using car/bus/truck), applied to crops of occupied spaces
 - **Framework:** Ultralytics YOLOv8, PyTorch, Google Colab (T4 GPU)
 - **Why this approach:** Fine-tuning a small pretrained model on PKLot is fast and cheap (a few minutes on a free GPU) while reaching very high accuracy, since the dataset already provides labeled occupancy annotations. Reusing a pretrained COCO model for vehicle type avoids collecting and labeling new data, keeping the project within Tier 1 scope.
+
+## Data Plan
+
+- **Source:** PKLot dataset (public), via Roboflow — https://public.roboflow.com/object-detection/pklot
+- **Size:** 12,416 images total (8,691 train / 2,483 valid / 1,242 test), ~695,900 labeled parking space instances across 3 parking lots (PUCPR, UFPR04, UFPR05), under sunny, cloudy, and rainy conditions
+- **Labels:** 2 classes — space-empty, space-occupied (bounding boxes)
+- **Vehicle type:** No custom collection needed — reused COCO classes (car, bus, truck) from a pretrained model
+- **License:** CC BY 4.0
